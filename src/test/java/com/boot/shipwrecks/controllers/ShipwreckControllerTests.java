@@ -1,8 +1,11 @@
 package com.boot.shipwrecks.controllers;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -48,7 +51,8 @@ public class ShipwreckControllerTests {
 		
 		Shipwreck wreck = shipwreckController.delete(2L);
 		verify(shipwreckRepository).findOne(2L);
-		assertEquals(2L, wreck.getId().longValue());
+		// assertEquals(2L, wreck.getId().longValue());
+		assertThat(wreck.getId(), is(2l));
 	}
 
 }
